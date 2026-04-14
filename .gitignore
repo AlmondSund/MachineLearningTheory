@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+.DS_Store
+
+# Local data and outputs that should not be versioned by default.
+data/raw/
+data/interim/
+data/processed/
+outputs/

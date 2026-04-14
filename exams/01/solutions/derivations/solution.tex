@@ -1,0 +1,852 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath, amssymb, amsfonts, mathtools}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{listings}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!50!black,
+  urlcolor=blue!50!black,
+  citecolor=blue!50!black,
+  pdftitle={Exam 01 Solution - Machine Learning Theory},
+  pdfauthor={Codex}
+}
+
+\lstdefinestyle{pythonstyle}{
+  language=Python,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue!60!black},
+  commentstyle=\color{green!40!black},
+  stringstyle=\color{red!50!black},
+  showstringspaces=false,
+  breaklines=true,
+  frame=single,
+  columns=fullflexible
+}
+
+\setlist[itemize]{topsep=4pt, itemsep=2pt, leftmargin=1.5em}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Hspace}{\mathcal{H}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\MMD}{\operatorname{MMD}}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\inner}[2]{\left\langle #1, #2 \right\rangle}
+\newcommand{\transpose}{^{\top}}
+
+\title{\textbf{Exam 01 Solution}\\[4pt]\large Machine Learning Theory}
+\author{Universidad Nacional de Colombia\\Course deliverable in English}
+\date{Term 2026-1}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\begin{center}
+\begin{tabular}{>{\bfseries}rl}
+Source statement: & \texttt{exams/01/statement/main.pdf} \\
+Code verification: & \texttt{exams/01/solutions/code/solve\_exam\_01.py} \\
+Numeric outputs: & \texttt{exams/01/solutions/artifacts/numeric\_results.json}
+\end{tabular}
+\end{center}
+
+\vspace{1em}
+
+\noindent
+This document provides a polished English solution to the first exam. The original statement numbers the SVD/kernel-trick sub-question as \texttt{1.3} again; here it is relabeled as \textbf{1.4} for clarity.
+
+\tableofcontents
+\newpage
+
+\section{Regression in Feature Space and Kernel Formulation}
+
+\subsection{Regularized Least Squares in Feature Space}
+
+We observe i.i.d. pairs
+\[
+\{(x_n, t_n)\}_{n=1}^N,
+\qquad
+x_n \in \R^P,
+\qquad
+t_n \in \R,
+\]
+and we assume the model
+\[
+t_n = \inner{w}{\phi(x_n)}_{\Hspace} + \eta_n,
+\qquad
+\eta_n \sim \mathcal{N}(0, \sigma_\eta^2).
+\]
+
+The unknown parameter is the weight vector
+\[
+w \in \Hspace.
+\]
+
+The regularized least-squares problem in feature space is
+\begin{equation}
+\widehat{w}
+=
+\arg\min_{w \in \Hspace}
+\left[
+\frac{1}{2}
+\sum_{n=1}^N
+\Bigl(t_n - \inner{w}{\phi(x_n)}_{\Hspace}\Bigr)^2
++
+\frac{\lambda}{2}\norm{w}_{\Hspace}^2
+\right],
+\qquad
+\lambda \ge 0.
+\label{eq:rrls-feature}
+\end{equation}
+
+In compact notation, if $t = [t_1,\dots,t_N]\transpose$ and $(\Phi w)_n = \inner{w}{\phi(x_n)}_{\Hspace}$, then
+\[
+\widehat{w}
+=
+\arg\min_{w \in \Hspace}
+\left[
+\frac{1}{2}\norm{t - \Phi w}_2^2
++
+\frac{\lambda}{2}\norm{w}_{\Hspace}^2
+\right].
+\]
+
+The regularization parameter $\lambda$ plays four roles:
+\begin{itemize}
+\item it penalizes large feature-space norms $\norm{w}_{\Hspace}$;
+\item it improves conditioning when $\Phi\transpose \Phi$ is singular or nearly singular;
+\item it controls the bias-variance tradeoff;
+\item it discourages fitting the observation noise too aggressively.
+\end{itemize}
+
+\subsection{Closed-Form Solution in Matrix Notation}
+
+Assume first that the feature space admits a finite coordinate representation of size $M$. Then
+\[
+\Phi
+=
+\begin{bmatrix}
+\phi(x_1)\transpose \\
+\vdots \\
+\phi(x_N)\transpose
+\end{bmatrix}
+\in \R^{N \times M},
+\qquad
+t =
+\begin{bmatrix}
+t_1 \\
+\vdots \\
+t_N
+\end{bmatrix}
+\in \R^N,
+\qquad
+w \in \R^M.
+\]
+
+The objective in \eqref{eq:rrls-feature} becomes
+\[
+J(w)
+=
+\frac{1}{2}(t-\Phi w)\transpose (t-\Phi w)
++
+\frac{\lambda}{2} w\transpose w.
+\]
+
+Expanding the quadratic term gives
+\[
+J(w)
+=
+\frac{1}{2}
+\left(
+t\transpose t
+- 2 t\transpose \Phi w
++ w\transpose \Phi\transpose \Phi w
+\right)
++
+\frac{\lambda}{2} w\transpose w.
+\]
+
+Differentiating with respect to $w$,
+\[
+\nabla_w J(w)
+=
+-\Phi\transpose t + \Phi\transpose \Phi w + \lambda w.
+\]
+
+The first-order optimality condition is
+\[
+-\Phi\transpose t + \Phi\transpose \Phi w + \lambda w = 0,
+\]
+which is equivalent to
+\begin{equation}
+(\Phi\transpose \Phi + \lambda I_M)w = \Phi\transpose t.
+\label{eq:normal-equation}
+\end{equation}
+
+Hence the estimator is
+\begin{equation}
+\widehat{w}
+=
+(\Phi\transpose \Phi + \lambda I_M)^{-1}\Phi\transpose t.
+\label{eq:primal-solution}
+\end{equation}
+
+In operator notation, valid even when $\Hspace$ is infinite-dimensional,
+\[
+\widehat{w}
+=
+(\Phi^\ast \Phi + \lambda I_{\Hspace})^{-1}\Phi^\ast t.
+\]
+
+\subsection{Polynomial Feature Map, Design Matrix, and Python Implementation}
+
+Consider the polynomial feature map
+\[
+\phi(x)
+=
+\begin{bmatrix}
+1 \\
+x \\
+x^2
+\end{bmatrix}.
+\]
+
+For a dataset $\{(x_n, t_n)\}_{n=1}^N$, the associated design matrix is
+\[
+\Phi
+=
+\begin{bmatrix}
+1 & x_1 & x_1^2 \\
+1 & x_2 & x_2^2 \\
+\vdots & \vdots & \vdots \\
+1 & x_N & x_N^2
+\end{bmatrix}
+\in \R^{N \times 3}.
+\]
+
+The implementation in the repository uses the exact formula from \eqref{eq:primal-solution}. The core code is:
+
+\begin{lstlisting}[style=pythonstyle]
+def build_polynomial_design_matrix(x_samples: np.ndarray) -> np.ndarray:
+    x_vector = np.asarray(x_samples, dtype=np.float64).reshape(-1)
+    return np.column_stack((np.ones_like(x_vector), x_vector, x_vector**2))
+
+def solve_regularized_least_squares(
+    design_matrix: np.ndarray,
+    targets: np.ndarray,
+    lambda_reg: float,
+) -> np.ndarray:
+    gram = design_matrix.T @ design_matrix
+    rhs = design_matrix.T @ targets
+    system = gram + lambda_reg * np.eye(design_matrix.shape[1], dtype=np.float64)
+    return np.linalg.solve(system, rhs)
+\end{lstlisting}
+
+\paragraph{Numerical example.}
+Take
+\[
+x = [-2,-1,0,1,2]\transpose,
+\qquad
+t = 1 + 0.5x + x^2
+= [4,1.5,1,2.5,6]\transpose.
+\]
+
+Then
+\[
+\Phi =
+\begin{bmatrix}
+1 & -2 & 4 \\
+1 & -1 & 1 \\
+1 & 0 & 0 \\
+1 & 1 & 1 \\
+1 & 2 & 4
+\end{bmatrix}.
+\]
+
+Using $\lambda = 0.1$, the script returns
+\[
+\widehat{w}
+\approx
+\begin{bmatrix}
+0.9674 \\
+0.4950 \\
+1.0066
+\end{bmatrix}.
+\]
+
+The fitted outputs are
+\[
+\widehat{t}
+\approx
+[4.0038,\ 1.4790,\ 0.9674,\ 2.4691,\ 5.9840]\transpose.
+\]
+
+These values are very close to the generating polynomial coefficients $(1,0.5,1)$. The small discrepancy is entirely expected: the penalty term shrinks the solution slightly toward the origin. The script also verifies that the primal and dual solutions coincide up to machine precision; the maximum absolute difference is approximately $5.55 \times 10^{-17}$.
+
+\subsection{Kernel Trick from the SVD of the Design Matrix}
+
+Let the thin singular value decomposition of the design matrix be
+\[
+\Phi = U_r \Sigma_r V_r\transpose,
+\]
+where
+\[
+U_r \in \R^{N \times r},
+\qquad
+\Sigma_r \in \R^{r \times r},
+\qquad
+V_r \in \R^{M \times r},
+\qquad
+r = \operatorname{rank}(\Phi).
+\]
+
+Then
+\[
+\Phi\transpose \Phi = V_r \Sigma_r^2 V_r\transpose,
+\qquad
+\Phi \Phi\transpose = U_r \Sigma_r^2 U_r\transpose.
+\]
+
+The second matrix is the Gram matrix
+\[
+K = \Phi \Phi\transpose,
+\qquad
+K_{ij} = \inner{\phi(x_i)}{\phi(x_j)}_{\Hspace} = k(x_i,x_j).
+\]
+
+From the primal estimator,
+\[
+\widehat{w}
+=
+(\Phi\transpose \Phi + \lambda I)^{-1}\Phi\transpose t,
+\]
+substituting the SVD gives
+\[
+\widehat{w}
+=
+\left(V_r \Sigma_r^2 V_r\transpose + \lambda I\right)^{-1}
+V_r \Sigma_r U_r\transpose t
+=
+V_r (\Sigma_r^2 + \lambda I_r)^{-1}\Sigma_r U_r\transpose t.
+\]
+
+Now define the dual coefficient vector
+\[
+\alpha = (K + \lambda I_N)^{-1}t.
+\]
+
+Using the SVD form of $K$,
+\[
+\alpha
+=
+U_r (\Sigma_r^2 + \lambda I_r)^{-1} U_r\transpose t
++
+\text{components in } \ker(K).
+\]
+
+Multiplying by $\Phi\transpose$,
+\[
+\Phi\transpose \alpha
+=
+V_r \Sigma_r U_r\transpose
+U_r (\Sigma_r^2 + \lambda I_r)^{-1} U_r\transpose t
+=
+V_r (\Sigma_r^2 + \lambda I_r)^{-1}\Sigma_r U_r\transpose t
+=
+\widehat{w}.
+\]
+
+Therefore
+\[
+\widehat{w} = \Phi\transpose \alpha,
+\qquad
+\alpha = (K+\lambda I_N)^{-1}t.
+\]
+
+For a new input $x$, the prediction is
+\[
+\widehat{f}(x)
+=
+\inner{\widehat{w}}{\phi(x)}_{\Hspace}
+=
+\left\langle \sum_{n=1}^N \alpha_n \phi(x_n), \phi(x) \right\rangle_{\Hspace}
+=
+\sum_{n=1}^N \alpha_n k(x_n,x).
+\]
+
+Equivalently,
+\[
+\widehat{f}(x)
+=
+k_x\transpose (K + \lambda I_N)^{-1} t,
+\qquad
+k_x =
+\begin{bmatrix}
+k(x_1,x) \\
+\vdots \\
+k(x_N,x)
+\end{bmatrix}.
+\]
+
+This is the kernel trick: explicit feature coordinates are unnecessary, because the full computation is expressed in terms of kernel evaluations.
+
+\section{RKHS, Mean Embeddings, and Discrepancy Between Distributions}
+
+\subsection{Empirical Mean Embedding and Kernel Evaluations}
+
+Let $k : \mathcal{X} \times \mathcal{X} \to \R$ be a positive-definite kernel with associated RKHS $\mathcal{H}_k$. Given a sample $\{x_n\}_{n=1}^N$, the empirical mean embedding is
+\[
+\widehat{\mu}_X
+=
+\frac{1}{N}\sum_{n=1}^N \phi(x_n)
+=
+\frac{1}{N}\sum_{n=1}^N k(x_n,\cdot)
+\in \mathcal{H}_k.
+\]
+
+For any query point $z \in \mathcal{X}$, the reproducing property yields
+\[
+\inner{\widehat{\mu}_X}{k(z,\cdot)}_{\mathcal{H}_k}
+=
+\frac{1}{N}\sum_{n=1}^N
+\inner{k(x_n,\cdot)}{k(z,\cdot)}_{\mathcal{H}_k}
+=
+\frac{1}{N}\sum_{n=1}^N k(x_n,z).
+\]
+
+So the embedding can be evaluated using kernel values only.
+
+\paragraph{Linear kernel.}
+For
+\[
+k(x_i,x_j) = x_i\transpose x_j,
+\qquad
+x_i,x_j \in \R^P,
+\]
+the RKHS is simply $\R^P$ with the standard inner product, and $\phi(x)=x$. Thus
+\[
+\widehat{\mu}_X
+=
+\frac{1}{N}\sum_{n=1}^N x_n
+=
+\bar{x}
+\in \R^P.
+\]
+
+Its evaluation at $z \in \R^P$ is
+\[
+\inner{\widehat{\mu}_X}{z}
+=
+\bar{x}\transpose z
+=
+\frac{1}{N}\sum_{n=1}^N x_n\transpose z
+=
+\frac{1}{N}\sum_{n=1}^N k(x_n,z).
+\]
+
+Dimensions:
+\begin{itemize}
+\item $x_n, z \in \R^P$,
+\item $\widehat{\mu}_X \in \R^P$,
+\item the evaluation $\bar{x}\transpose z$ is a scalar.
+\end{itemize}
+
+\paragraph{Gaussian RBF kernel.}
+For
+\[
+k(x_i,x_j) = \exp\bigl(-\gamma \norm{x_i-x_j}_2^2\bigr),
+\qquad
+\gamma > 0,
+\]
+the RKHS is generally infinite-dimensional, but the mean embedding is still
+\[
+\widehat{\mu}_X = \frac{1}{N}\sum_{n=1}^N k(x_n,\cdot),
+\]
+and its evaluation at $z$ is
+\[
+\inner{\widehat{\mu}_X}{k(z,\cdot)}_{\mathcal{H}_k}
+=
+\frac{1}{N}\sum_{n=1}^N \exp\bigl(-\gamma \norm{x_n-z}_2^2\bigr).
+\]
+
+Dimensions:
+\begin{itemize}
+\item $x_n, z \in \R^P$,
+\item $\widehat{\mu}_X \in \mathcal{H}_k$,
+\item the evaluation is a scalar,
+\item in practice we work with the vector $k_z = [k(x_1,z), \dots, k(x_N,z)]\transpose \in \R^N$.
+\end{itemize}
+
+\paragraph{Interpretation.}
+The linear-kernel embedding is exactly the ordinary sample mean in the original space. The RBF embedding instead summarizes the sample in a nonlinear feature space and therefore captures local similarity structure rather than only first-order Euclidean coordinates.
+
+\paragraph{Numerical check.}
+Using the sample
+\[
+\{(0,1), (1,0), (2,1)\}
+\qquad
+\text{and}
+\qquad
+z=(1,2),
+\]
+the script returns:
+\begin{itemize}
+\item linear sample mean: $(1,\tfrac{2}{3})$;
+\item linear evaluation via $\bar{x}\transpose z$: $2.3333$;
+\item direct linear kernel average: $2.3333$;
+\item RBF evaluation with $\gamma = 0.5$: $0.2904$.
+\end{itemize}
+
+\subsection{Raw, Centered, and Standardized Moments}
+
+The distinction between raw, centered, and standardized moments is conceptually identical in the original space and in the feature space; only the object whose moments are taken changes.
+
+\paragraph{Original space.}
+Let $X \in \R^P$ be a random vector with mean $\mu = \E[X]$ and marginal standard deviations collected in a diagonal matrix $S$.
+
+The $m$th raw moment is
+\[
+\E[X^{\otimes m}],
+\]
+so it measures the moment relative to the origin.
+
+The $m$th centered moment is
+\[
+\E[(X-\mu)^{\otimes m}],
+\]
+so it measures variation around the mean.
+
+The $m$th standardized moment is
+\[
+\E\left[\left(S^{-1}(X-\mu)\right)^{\otimes m}\right],
+\]
+which removes both location and scale.
+
+\paragraph{Kernel-induced space.}
+Replace $X$ by the feature-space random element $\phi(X) \in \mathcal{H}_k$, and denote its mean by
+\[
+\mu_\phi = \E[\phi(X)].
+\]
+
+Then:
+\begin{itemize}
+\item raw moments are taken relative to the origin of $\mathcal{H}_k$;
+\item centered moments are taken relative to $\mu_\phi$;
+\item standardized moments remove both the mean effect and the scale effect.
+\end{itemize}
+
+Along any fixed direction $u \in \mathcal{H}_k$,
+\[
+\text{raw: }
+\E\bigl[\inner{\phi(X)}{u}^m\bigr],
+\]
+\[
+\text{centered: }
+\E\bigl[\inner{\phi(X)-\mu_\phi}{u}^m\bigr],
+\]
+\[
+\text{standardized: }
+\E\left[
+\left(
+\frac{\inner{\phi(X)-\mu_\phi}{u}}
+{\sqrt{\Var(\inner{\phi(X)}{u})}}
+\right)^m
+\right].
+\]
+
+Therefore:
+\begin{itemize}
+\item raw moments depend on the origin;
+\item centered moments remove the mean;
+\item standardized moments remove mean and scale simultaneously;
+\item in RKHS this is especially important because nonlinear embeddings can alter norms and geometry substantially.
+\end{itemize}
+
+\subsection{RKHS Discrepancy Between Two Distributions and the MNIST Experiment}
+
+Let $X \sim P$ and $Y \sim Q$, with embeddings
+\[
+\mu_P = \E[k(X,\cdot)],
+\qquad
+\mu_Q = \E[k(Y,\cdot)].
+\]
+
+The squared RKHS discrepancy is
+\[
+\norm{\mu_P - \mu_Q}_{\mathcal{H}_k}^2.
+\]
+
+Expanding the norm gives
+\[
+\norm{\mu_P - \mu_Q}_{\mathcal{H}_k}^2
+=
+\inner{\mu_P}{\mu_P}_{\mathcal{H}_k}
++
+\inner{\mu_Q}{\mu_Q}_{\mathcal{H}_k}
+- 2\inner{\mu_P}{\mu_Q}_{\mathcal{H}_k}.
+\]
+
+Using the reproducing property,
+\[
+\inner{\mu_P}{\mu_P}_{\mathcal{H}_k} = \E[k(X,X')],
+\qquad
+\inner{\mu_Q}{\mu_Q}_{\mathcal{H}_k} = \E[k(Y,Y')],
+\qquad
+\inner{\mu_P}{\mu_Q}_{\mathcal{H}_k} = \E[k(X,Y)].
+\]
+
+Hence
+\begin{equation}
+\MMD^2(P,Q)
+=
+\E[k(X,X')]
++
+\E[k(Y,Y')]
+- 2\E[k(X,Y)].
+\label{eq:mmd-population}
+\end{equation}
+
+\paragraph{Empirical matrix form.}
+Let
+\[
+X_m = \{x_1,\dots,x_m\},
+\qquad
+Y_n = \{y_1,\dots,y_n\}.
+\]
+
+Define
+\[
+(K_{XX})_{ij} = k(x_i,x_j),
+\qquad
+(K_{YY})_{ij} = k(y_i,y_j),
+\qquad
+(K_{XY})_{ij} = k(x_i,y_j).
+\]
+
+Then the biased empirical estimator is
+\begin{equation}
+\widehat{\MMD}_{\mathrm{b}}^2
+=
+\frac{1}{m^2}\bm{1}_m\transpose K_{XX}\bm{1}_m
++
+\frac{1}{n^2}\bm{1}_n\transpose K_{YY}\bm{1}_n
+- \frac{2}{mn}\bm{1}_m\transpose K_{XY}\bm{1}_n.
+\label{eq:mmd-empirical}
+\end{equation}
+
+This is the matrix form requested by the exam.
+
+\paragraph{MNIST implementation.}
+The repository script downloads MNIST, selects a balanced subset of 100 training images per digit, uses an RBF kernel, and computes pairwise class discrepancies using \eqref{eq:mmd-empirical}. The bandwidth is selected by a median heuristic on a pooled subset, which in this run gives
+\[
+\gamma \approx 0.0097933.
+\]
+
+The smallest discrepancies are shown in Table~\ref{tab:smallest-mmd}, and the largest in Table~\ref{tab:largest-mmd}.
+
+\begin{table}[h]
+\centering
+\caption{Five smallest empirical RKHS discrepancies on MNIST.}
+\label{tab:smallest-mmd}
+\begin{tabular}{ccr}
+\toprule
+Digit A & Digit B & Biased $\widehat{\MMD}^2$ \\
+\midrule
+4 & 9 & 0.0689 \\
+3 & 5 & 0.0876 \\
+5 & 8 & 0.0884 \\
+7 & 9 & 0.0996 \\
+8 & 9 & 0.1234 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Five largest empirical RKHS discrepancies on MNIST.}
+\label{tab:largest-mmd}
+\begin{tabular}{ccr}
+\toprule
+Digit A & Digit B & Biased $\widehat{\MMD}^2$ \\
+\midrule
+0 & 1 & 0.4687 \\
+1 & 7 & 0.3420 \\
+1 & 4 & 0.3416 \\
+1 & 6 & 0.3293 \\
+1 & 9 & 0.3264 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Interpretation.}
+A small RKHS discrepancy means that the two empirical class distributions induce similar kernel mean embeddings. A large discrepancy means that the classes are well separated in the geometry induced by the kernel. In this run:
+\begin{itemize}
+\item the pair $4$ vs.\ $9$ is the closest, which is plausible because many handwritten instances share similar topological and stroke patterns;
+\item the pair $0$ vs.\ $1$ is the most separated, which is also intuitive because one class is loop-dominated while the other is largely stroke-dominated;
+\item several of the largest discrepancies involve the digit $1$, suggesting that under the chosen kernel it is especially distinctive relative to other classes.
+\end{itemize}
+
+These values are empirical and therefore depend on the sample size, the sampling seed, and the kernel bandwidth.
+
+\section{Matrix Form of Kernels and Induced Geometry}
+
+\subsection{Squared Euclidean Distances in Matrix Form}
+
+Take two sample rows $x_i, x_j \in \R^P$. Then
+\[
+\norm{x_i-x_j}_2^2
+=
+(x_i-x_j)\transpose (x_i-x_j).
+\]
+
+Expanding the product gives
+\[
+\norm{x_i-x_j}_2^2
+=
+x_i\transpose x_i
++
+x_j\transpose x_j
+- 2x_i\transpose x_j.
+\]
+
+Now define the data matrix
+\[
+X =
+\begin{bmatrix}
+x_1\transpose \\
+\vdots \\
+x_N\transpose
+\end{bmatrix}
+\in \R^{N \times P},
+\qquad
+G = XX\transpose \in \R^{N \times N}.
+\]
+
+Let the vector of squared norms be
+\[
+s =
+\begin{bmatrix}
+\norm{x_1}_2^2 \\
+\vdots \\
+\norm{x_N}_2^2
+\end{bmatrix}
+=
+\operatorname{diag}(G)
+\in \R^N,
+\]
+and let $\bm{1} \in \R^N$ denote the all-ones vector. Then the full matrix of squared distances is
+\begin{equation}
+D
+=
+s \bm{1}\transpose + \bm{1} s\transpose - 2XX\transpose.
+\label{eq:distance-matrix}
+\end{equation}
+
+Indeed, the $(i,j)$ entry of the right-hand side is
+\[
+s_i + s_j - 2x_i\transpose x_j
+=
+\norm{x_i}_2^2 + \norm{x_j}_2^2 - 2x_i\transpose x_j
+=
+\norm{x_i-x_j}_2^2.
+\]
+
+\subsection{Gaussian Kernel Matrix: Diagonal, Symmetry, and Positive Semidefiniteness}
+
+The Gaussian (RBF) kernel matrix is
+\[
+K_{ij} = \exp\bigl(-\gamma \norm{x_i-x_j}_2^2\bigr),
+\qquad
+\gamma > 0.
+\]
+
+\paragraph{Diagonal entries.}
+If $i=j$, then $\norm{x_i-x_i}_2^2 = 0$, so
+\[
+K_{ii} = \exp(0) = 1.
+\]
+Hence all diagonal entries are identical:
+\[
+K_{11} = K_{22} = \cdots = K_{NN} = 1.
+\]
+
+Geometrically,
+\[
+K_{ii}
+=
+\inner{\phi(x_i)}{\phi(x_i)}_{\Hspace}
+=
+\norm{\phi(x_i)}_{\Hspace}^2,
+\]
+so every transformed point has the same RKHS norm:
+\[
+\norm{\phi(x_i)}_{\Hspace} = 1.
+\]
+Therefore all embedded samples lie on the unit sphere of the induced feature space.
+
+\paragraph{Symmetry.}
+Since Euclidean distance is symmetric,
+\[
+\norm{x_i-x_j}_2^2 = \norm{x_j-x_i}_2^2,
+\]
+it follows immediately that
+\[
+K_{ij} = K_{ji}.
+\]
+Therefore
+\[
+K = K\transpose.
+\]
+
+\paragraph{Positive semidefiniteness.}
+The Gaussian kernel is positive definite. Therefore, for every coefficient vector $c \in \R^N$,
+\[
+\sum_{i=1}^N \sum_{j=1}^N c_i c_j k(x_i,x_j) \ge 0,
+\]
+which is equivalent to
+\[
+c\transpose K c \ge 0.
+\]
+Hence $K$ is positive semidefinite.
+
+Because the kernel is positive definite, there exists a feature map $\phi$ such that
+\[
+K_{ij} = k(x_i,x_j) = \inner{\phi(x_i)}{\phi(x_j)}_{\Hspace}.
+\]
+So the Gaussian kernel matrix is precisely a Gram matrix in the induced feature space.
+
+\paragraph{Numerical sanity check.}
+The verification script confirms the theory:
+\begin{itemize}
+\item the maximum error between the direct distance computation and the matrix identity \eqref{eq:distance-matrix} is approximately $5.68 \times 10^{-14}$;
+\item the maximum deviation of the RBF diagonal from $1$ is approximately $5.55 \times 10^{-16}$;
+\item the symmetry error is zero up to machine precision;
+\item on the tested subset, the minimum eigenvalue is approximately $0.0777$, which is consistent with positive semidefiniteness.
+\end{itemize}
+
+\section{Conclusion}
+
+This exam links four mutually reinforcing viewpoints:
+\begin{itemize}
+\item primal regularized least squares in feature space;
+\item dual kernel regression through the Gram matrix;
+\item RKHS mean embeddings and MMD as distribution-level summaries;
+\item Gaussian kernels as distance-based Gram matrices with a clear induced geometry.
+\end{itemize}
+
+The unifying principle is that once feature-space inner products are replaced by kernel evaluations, the entire analysis can be carried out without explicitly constructing the feature map.
+
+\end{document}
