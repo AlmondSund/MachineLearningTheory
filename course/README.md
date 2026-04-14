@@ -4,7 +4,7 @@ This repository is intended to hold the full Machine Learning Theory course mate
 
 ## Organization Principles
 
-- `exams/` contains official statements plus structured solution workspaces.
+- `exams/` contains one folder per exam with the original statement PDF and one notebook solution.
 - `workshops/` contains exploratory or guided practical material.
 - `notes/` contains lecture-oriented study material and distilled summaries.
 - `src/` is reserved for code that becomes reusable across notebooks, exams, or experiments.
@@ -17,7 +17,6 @@ This repository is intended to hold the full Machine Learning Theory course mate
 
 ## Intended Workflow
 
-1. Read the original statement in `statement/`.
-2. Write derivations in `solutions/derivations/`.
-3. Put implementation work in `solutions/code/` or reusable code in `src/`.
-4. Save plots, tables, and generated deliverables in `solutions/artifacts/`.
+1. Read the original statement in `main.pdf`.
+2. Solve the exam directly in `notebook.ipynb`.
+3. Put only truly reusable cross-exam code in `src/`.

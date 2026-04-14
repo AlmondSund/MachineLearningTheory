@@ -1,10 +1,8 @@
 # Exams
 
-Each exam has its own numbered directory with a stable internal layout:
+Each exam has its own numbered directory with a minimal layout:
 
-- `statement/`: original exam statement and any supporting instructions.
-- `solutions/derivations/`: mathematical derivations and written solutions.
-- `solutions/code/`: implementation used to verify or support the derivations.
-- `solutions/artifacts/`: generated plots, tables, exported notebooks, or other deliverables.
+- `main.pdf`: original exam statement.
+- `notebook.ipynb`: complete solution notebook with derivations and code together.
 
-This keeps official material separate from our solution work and avoids mixing source statements with derived outputs.
+The intended presentation path is simple: open the notebook and show the full solution there.

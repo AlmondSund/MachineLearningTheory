@@ -4,7 +4,7 @@ Use this directory for local datasets or heavier artifacts that should stay sepa
 
 Recommended convention:
 
-- keep small, exam-specific outputs inside each exam's `solutions/artifacts/`,
+- keep the exam folders lightweight and notebook-first,
 - keep larger downloaded datasets under `data/raw/`,
 - keep transformed intermediate data under `data/interim/` or `data/processed/`.
 
