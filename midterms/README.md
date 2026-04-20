@@ -1,6 +1,6 @@
 # Midterms
 
-Each midterms has its own numbered directory with a minimal layout:
+Each midterm has its own numbered directory with a minimal layout:
 
 - `main.pdf`: original midterm statement.
 - `notebooks/`: complete solution notebooks with derivations and code together.
