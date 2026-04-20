@@ -10,6 +10,5 @@ venv/
 
 # Local data and outputs that should not be versioned by default.
 data/raw/
-data/interim/
 data/processed/
 outputs/

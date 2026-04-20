@@ -7,7 +7,7 @@ This repository is intended to hold the full Machine Learning Theory course mate
 - `exams/` contains one folder per exam with the original statement PDF and one notebook solution.
 - `workshops/` contains exploratory or guided practical material.
 - `notes/` contains lecture-oriented study material and distilled summaries.
-- `src/` is reserved for code that becomes reusable across notebooks, exams, or experiments.
+- `project/` is reserved for the final project of the course
 
 ## Naming
 
@@ -18,5 +18,4 @@ This repository is intended to hold the full Machine Learning Theory course mate
 ## Intended Workflow
 
 1. Read the original statement in `main.pdf`.
-2. Solve the exam directly in `notebook.ipynb`.
-3. Put only truly reusable cross-exam code in `src/`.
+2. Solve the exam directly in `notebooks/`.

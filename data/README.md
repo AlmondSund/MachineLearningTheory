@@ -6,6 +6,6 @@ Recommended convention:
 
 - keep the exam folders lightweight and notebook-first,
 - keep larger downloaded datasets under `data/raw/`,
-- keep transformed intermediate data under `data/interim/` or `data/processed/`.
+- keep transformed intermediate data under `data/processed/`.
 
 These subdirectories are ignored by default in `.gitignore`.
