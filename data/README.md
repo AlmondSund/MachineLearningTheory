@@ -4,7 +4,7 @@ Use this directory for local datasets or heavier artifacts that should stay sepa
 
 Recommended convention:
 
-- keep the exam folders lightweight and notebook-first,
+- keep the midterm folders lightweight and notebook-first,
 - keep larger downloaded datasets under `data/raw/`,
 - keep transformed intermediate data under `data/processed/`.
 
