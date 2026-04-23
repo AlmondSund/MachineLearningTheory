@@ -2,6 +2,14 @@
 
 Repository for the Machine Learning Theory course at Universidad Nacional de Colombia.
 
+For notebook work that uses Jupyter frontends or `ipywidgets`, install the
+project with the notebook extra:
+
+```bash
+python -m pip install -e ".[notebooks]"
+./.venv/bin/jupyter lab
+```
+
 This repository is organized around the full course
 
 ## Repository Map

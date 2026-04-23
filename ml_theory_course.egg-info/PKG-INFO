@@ -1,0 +1,42 @@
+Metadata-Version: 2.4
+Name: ml-theory-course
+Version: 0.1.0
+Summary: Course materials, derivations, and experiments for Machine Learning Theory at Universidad Nacional de Colombia.
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: matplotlib>=3.10
+Requires-Dist: numpy>=2.4
+Requires-Dist: scikit-learn>=1.8
+Provides-Extra: notebooks
+Requires-Dist: gdown>=5.2; extra == "notebooks"
+Requires-Dist: ipywidgets>=8.1; extra == "notebooks"
+Requires-Dist: jupyterlab>=4.4; extra == "notebooks"
+Requires-Dist: notebook>=7.4; extra == "notebooks"
+Requires-Dist: openpyxl>=3.1; extra == "notebooks"
+Requires-Dist: pandas>=2.2; extra == "notebooks"
+Requires-Dist: plotly>=6.0; extra == "notebooks"
+Requires-Dist: seaborn>=0.13; extra == "notebooks"
+Requires-Dist: streamlit>=1.41; extra == "notebooks"
+
+# Machine Learning Theory
+
+Repository for the Machine Learning Theory course at Universidad Nacional de Colombia.
+
+For notebook work that uses Jupyter frontends or `ipywidgets`, install the
+project with the notebook extra:
+
+```bash
+python -m pip install -e ".[notebooks]"
+./.venv/bin/jupyter lab
+```
+
+This repository is organized around the full course
+
+## Repository Map
+
+- `course/`: course context, organization, and repository conventions.
+- `midterms/`: midterms statements plus one notebook solution per midterm.
+- `workshops/`: workshop notebooks grouped one workshop per directory.
+- `notes/`: lecture notes, summaries, and study material.
+- `data/`: local data conventions for datasets and heavier artifacts.
+- `project/`: final project of the course.
