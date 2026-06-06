@@ -24,11 +24,11 @@
 \definecolor{dense}{HTML}{4F46E5}
 \definecolor{cnn}{HTML}{059669}
 \definecolor{rnn}{HTML}{EA580C}
-\definecolor{trf}{HTML}{7C3AED}
+\definecolor{trf}{HTML}{DC2626}
 \definecolor{densebg}{HTML}{EEF2FF}
 \definecolor{cnnbg}{HTML}{ECFDF5}
 \definecolor{rnnbg}{HTML}{FFF7ED}
-\definecolor{trfbg}{HTML}{F5F3FF}
+\definecolor{trfbg}{HTML}{FEF2F2}
 \definecolor{soft}{HTML}{FFFFFF}
 
 \pagecolor{bg}
@@ -44,7 +44,7 @@
     drop shadow={opacity=0.16,shadow xshift=1.5mm,shadow yshift=-1.5mm},
     height=121mm,
     valign=top,
-    fontupper=\scriptsize
+    fontupper=\footnotesize
   },
   sectionbox/.style={
     enhanced,
@@ -56,12 +56,12 @@
   }
 }
 
-\newcommand{\apptag}[2]{\tikz[baseline=(X.base)]\node[inner xsep=1.7mm,inner ysep=0.55mm,rounded corners=1.2mm,fill=#1!12,text=#1,font=\tiny\bfseries](X){#2};}
+\newcommand{\apptag}[2]{\tikz[baseline=(X.base)]\node[inner xsep=1.5mm,inner ysep=0.55mm,rounded corners=1.2mm,fill=#1!12,text=#1,font=\scriptsize\bfseries](X){#2};}
 \newcommand{\cardtitle}[3]{%
   {\Large\bfseries\color{#1} #2}\hfill\tikz[baseline=-0.6ex]\node[circle,fill=#1,text=white,inner sep=1.45mm,font=\bfseries\scriptsize]{#3};\par
-  \vspace{1mm}{\color{muted}\footnotesize #2 architecture}\par\vspace{1mm}\hrule height 0.4pt\color{line}\vspace{1.3mm}
+  \vspace{1mm}{\color{muted}\small #2 architecture}\par\vspace{1mm}\hrule height 0.4pt\color{line}\vspace{1.3mm}
 }
-\newcommand{\subhead}[2]{\vspace{0.8mm}{\color{#1}\bfseries\scriptsize #2}\par\vspace{0.4mm}}
+\newcommand{\subhead}[2]{\vspace{0.8mm}{\color{#1}\bfseries\footnotesize #2}\par\vspace{0.4mm}}
 
 % ---------- Diagrams ----------
 \newcommand{\densedigram}{%
@@ -179,7 +179,7 @@
  h^{(\ell)}=\phi\!\left(W^{(\ell)}h^{(\ell-1)}+b^{(\ell)}\right)
 \]
 \vspace{-1.5mm}
-\scriptsize $W^{(\ell)}\in\mathbb{R}^{m_\ell\times m_{\ell-1}}$, $b^{(\ell)}\in\mathbb{R}^{m_\ell}$.
+\footnotesize $W^{(\ell)}\in\mathbb{R}^{m_\ell\times m_{\ell-1}}$, $b^{(\ell)}\in\mathbb{R}^{m_\ell}$.
 \end{tcolorbox}
 \subhead{dense}{Principal layers}
 \begin{center}\densedigram\end{center}
@@ -190,7 +190,7 @@ Flat vector representation. Each output unit can combine every feature from the 
 \subhead{dense}{Representative applications}
 \apptag{dense}{tabular prediction}\,\apptag{dense}{regression}\,\apptag{dense}{risk scoring}\,\apptag{dense}{baseline models}
 \vfill
-{\color{dense}\bfseries\tiny Core limitation:} \textcolor{muted}{\tiny ignores spatial or temporal structure unless engineered into the input.}
+{\color{dense}\bfseries\scriptsize Core limitation:} \textcolor{muted}{\scriptsize structure must be engineered into the input.}
 \end{tcolorbox}
 \end{minipage}\hfill
 \begin{minipage}[t]{0.244\linewidth}
@@ -202,7 +202,7 @@ Flat vector representation. Each output unit can combine every feature from the 
  Y_{i,j,k}=\phi\!\left(b_k+\sum_{u,v,c}K_{u,v,c,k}X_{i+u,j+v,c}\right)
 \]
 \vspace{-1.5mm}
-\scriptsize A shared filter $K$ scans local neighborhoods of the input grid.
+\footnotesize A shared filter $K$ scans local neighborhoods of the input grid.
 \end{tcolorbox}
 \subhead{cnn}{Principal layers}
 \begin{center}\cnndigram\end{center}
@@ -211,9 +211,10 @@ Flat vector representation. Each output unit can combine every feature from the 
 Locality, parameter sharing, and translation equivariance. Nearby pixels or grid cells are assumed to form reusable patterns.
 \end{tcolorbox}
 \subhead{cnn}{Representative applications}
-\apptag{cnn}{image classification}\,\apptag{cnn}{object detection}\,\apptag{cnn}{segmentation}\,\apptag{cnn}{medical imaging}\,\apptag{cnn}{spectrograms}
+\apptag{cnn}{image classification}\,\apptag{cnn}{object detection}\,\apptag{cnn}{segmentation}\par\vspace{0.6mm}
+\apptag{cnn}{medical imaging}\,\apptag{cnn}{spectrograms}
 \vfill
-{\color{cnn}\bfseries\tiny Core limitation:} \textcolor{muted}{\tiny global context usually requires depth, pooling, dilation, or attention.}
+{\color{cnn}\bfseries\scriptsize Core limitation:} \textcolor{muted}{\scriptsize global context needs depth, pooling, dilation, or attention.}
 \end{tcolorbox}
 \end{minipage}\hfill
 \begin{minipage}[t]{0.244\linewidth}
@@ -225,7 +226,7 @@ Locality, parameter sharing, and translation equivariance. Nearby pixels or grid
  h_t=\phi(W_xx_t+W_hh_{t-1}+b_h),\qquad \hat{y}_t=g(W_yh_t+b_y)
 \]
 \vspace{-1.5mm}
-\scriptsize LSTM/GRU variants add gates to control memory and gradients.
+\footnotesize LSTM/GRU variants add gates to control memory and gradients.
 \end{tcolorbox}
 \subhead{rnn}{Principal layers}
 \begin{center}\rnndigram\end{center}
@@ -236,7 +237,7 @@ Temporal order and stateful memory. The hidden state summarizes previous element
 \subhead{rnn}{Representative applications}
 \apptag{rnn}{time series}\,\apptag{rnn}{speech}\,\apptag{rnn}{language modeling}\,\apptag{rnn}{biomedical signals}\,\apptag{rnn}{control}
 \vfill
-{\color{rnn}\bfseries\tiny Core limitation:} \textcolor{muted}{\tiny sequential dependency slows parallelization and may cause unstable gradients.}
+{\color{rnn}\bfseries\scriptsize Core limitation:} \textcolor{muted}{\scriptsize sequential state limits parallelism and gradient stability.}
 \end{tcolorbox}
 \end{minipage}\hfill
 \begin{minipage}[t]{0.244\linewidth}
@@ -261,7 +262,7 @@ Global pairwise interaction. Any token, patch, or element may attend to any othe
 \subhead{trf}{Representative applications}
 \apptag{trf}{LLMs}\,\apptag{trf}{translation}\,\apptag{trf}{vision transformers}\,\apptag{trf}{multimodal AI}\,\apptag{trf}{code}
 \vfill
-{\color{trf}\bfseries\tiny Core limitation:} \textcolor{muted}{\tiny vanilla self-attention scales as $O(n^2)$ with sequence length.}
+{\color{trf}\bfseries\scriptsize Core limitation:} \textcolor{muted}{\scriptsize vanilla attention scales as $O(n^2)$ with sequence length.}
 \end{tcolorbox}
 \end{minipage}
 
@@ -270,9 +271,9 @@ Global pairwise interaction. Any token, patch, or element may attend to any othe
 % ---------- Bottom comparison ----------
 \begin{tcolorbox}[enhanced,arc=3mm,boxrule=0.6pt,colframe=line,colback=white,left=4mm,right=4mm,top=2.2mm,bottom=2.2mm]
 {\bfseries\color{ink}Similarities, Differences, and Selection Rule}\hfill
-{\scriptsize\textcolor{muted}{Choose the architecture whose inductive bias matches the structure of the data.}}\par\vspace{1mm}
+{\footnotesize\textcolor{muted}{Choose the architecture whose inductive bias matches the structure of the data.}}\par\vspace{1mm}
 \renewcommand{\arraystretch}{1.18}
-\scriptsize
+\fontsize{8}{9.2}\selectfont
 \begin{tabularx}{\linewidth}{>{\bfseries}p{24mm}X X X X}
 \toprule
 Architecture & Best suited for & Main operation & Structural assumption & Main trade-off \\
