@@ -1,0 +1,112 @@
+{
+  "classes": [
+    {
+      "annotation_rows": 5481,
+      "class_id": "0",
+      "class_name": "Aortic enlargement"
+    },
+    {
+      "annotation_rows": 255,
+      "class_id": "1",
+      "class_name": "Atelectasis"
+    },
+    {
+      "annotation_rows": 851,
+      "class_id": "2",
+      "class_name": "Calcification"
+    },
+    {
+      "annotation_rows": 4046,
+      "class_id": "3",
+      "class_name": "Cardiomegaly"
+    },
+    {
+      "annotation_rows": 519,
+      "class_id": "4",
+      "class_name": "Consolidation"
+    },
+    {
+      "annotation_rows": 904,
+      "class_id": "5",
+      "class_name": "ILD"
+    },
+    {
+      "annotation_rows": 1097,
+      "class_id": "6",
+      "class_name": "Infiltration"
+    },
+    {
+      "annotation_rows": 2188,
+      "class_id": "7",
+      "class_name": "Lung Opacity"
+    },
+    {
+      "annotation_rows": 2324,
+      "class_id": "8",
+      "class_name": "Nodule/Mass"
+    },
+    {
+      "annotation_rows": 1945,
+      "class_id": "9",
+      "class_name": "Other lesion"
+    },
+    {
+      "annotation_rows": 2190,
+      "class_id": "10",
+      "class_name": "Pleural effusion"
+    },
+    {
+      "annotation_rows": 4308,
+      "class_id": "11",
+      "class_name": "Pleural thickening"
+    },
+    {
+      "annotation_rows": 195,
+      "class_id": "12",
+      "class_name": "Pneumothorax"
+    },
+    {
+      "annotation_rows": 4097,
+      "class_id": "13",
+      "class_name": "Pulmonary fibrosis"
+    },
+    {
+      "annotation_rows": 15525,
+      "class_id": "14",
+      "class_name": "No finding"
+    }
+  ],
+  "contract_checks": {
+    "image_size_rows_cover_all_pngs": true,
+    "sample_submission_has_unique_images": true,
+    "sample_submission_images_match_test_pngs": true,
+    "train_csv_images_match_pngs": true
+  },
+  "image_counts": {
+    "all_images_with_size_rows": 15000,
+    "test_duplicate_rows_in_test_csv": 15562,
+    "test_png": 6427,
+    "test_rows_in_test_csv": 21989,
+    "test_unique_in_sample_submission": 6427,
+    "test_unique_in_test_csv": 6427,
+    "train_png": 8573,
+    "train_unique_in_csv": 8573
+  },
+  "mismatches": {
+    "extra_test_pngs": [],
+    "extra_train_pngs": [],
+    "missing_test_pngs": [],
+    "missing_train_pngs": []
+  },
+  "paths": {
+    "root": "/home/mitin/code/cxr-amia/data/raw/amia-public-challenge-2026",
+    "sample_submission_csv": "/home/mitin/code/cxr-amia/data/raw/amia-public-challenge-2026/sample_submission.csv",
+    "train_csv": "/home/mitin/code/cxr-amia/data/raw/amia-public-challenge-2026/train.csv"
+  },
+  "row_counts": {
+    "img_size_csv": 15000,
+    "sample_submission_csv": 6427,
+    "test_csv": 21989,
+    "train_csv": 45925
+  }
+}

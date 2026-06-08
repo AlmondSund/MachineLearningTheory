@@ -1,0 +1,27 @@
+{
+  "detection_counts_by_class": {
+    "0": 6241,
+    "1": 1038,
+    "10": 3817,
+    "11": 22409,
+    "12": 564,
+    "13": 14233,
+    "14": 4067,
+    "2": 3989,
+    "3": 5017,
+    "4": 2271,
+    "5": 7825,
+    "6": 4757,
+    "7": 8329,
+    "8": 5118,
+    "9": 14243
+  },
+  "expected_rows": 6427,
+  "output": "/kaggle/working/models/rtdetr-l-e20-b8-t4x2-ddpfix-t10h5/submission.csv",
+  "prediction_batch": 8,
+  "prediction_chunk_size": 128,
+  "prediction_conf": 0.05,
+  "prediction_iou": 0.4,
+  "prediction_max_detections": 300,
+  "rows": 6427
+}

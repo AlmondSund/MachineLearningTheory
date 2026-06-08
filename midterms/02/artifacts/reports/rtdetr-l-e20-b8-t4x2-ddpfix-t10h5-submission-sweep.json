@@ -1,0 +1,418 @@
+{
+  "images": 6427,
+  "model_conf_for_inference": 0.01,
+  "model_kind": "rtdetr",
+  "model_max_detections_for_inference": 300,
+  "nms_iou": 0.4,
+  "submissions": [
+    {
+      "conf": 0.01,
+      "max_detections": 100,
+      "output": "artifacts/submissions/rtdetr-l-e20-b8-t4x2-ddpfix-t10h5-iou04-conf001-max100.csv",
+      "submission": {
+        "detection_counts_by_class": {
+          "0": 22119,
+          "1": 1769,
+          "10": 12059,
+          "11": 60325,
+          "12": 2332,
+          "13": 36687,
+          "14": 383,
+          "2": 7772,
+          "3": 15561,
+          "4": 2622,
+          "5": 24132,
+          "6": 6706,
+          "7": 16536,
+          "8": 8687,
+          "9": 29956
+        },
+        "expected_rows": 6427,
+        "output": "artifacts/submissions/rtdetr-l-e20-b8-t4x2-ddpfix-t10h5-iou04-conf001-max100.csv",
+        "rows": 6427
+      },
+      "validation": {
+        "detection_counts_by_class": {
+          "0": 22119,
+          "1": 1769,
+          "10": 12059,
+          "11": 60325,
+          "12": 2332,
+          "13": 36687,
+          "14": 383,
+          "2": 7772,
+          "3": 15561,
+          "4": 2622,
+          "5": 24132,
+          "6": 6706,
+          "7": 16536,
+          "8": 8687,
+          "9": 29956
+        },
+        "error_count": 0,
+        "errors": [],
+        "expected_rows": 6427,
+        "rows": 6427,
+        "valid": true
+      }
+    },
+    {
+      "conf": 0.01,
+      "max_detections": 300,
+      "output": "artifacts/submissions/rtdetr-l-e20-b8-t4x2-ddpfix-t10h5-iou04-conf001-max300.csv",
+      "submission": {
+        "detection_counts_by_class": {
+          "0": 27665,
+          "1": 6266,
+          "10": 23258,
+          "11": 93848,
+          "12": 8689,
+          "13": 81294,
+          "14": 383,
+          "2": 19692,
+          "3": 20098,
+          "4": 8450,
+          "5": 43818,
+          "6": 19597,
+          "7": 41148,
+          "8": 23728,
+          "9": 83547
+        },
+        "expected_rows": 6427,
+        "output": "artifacts/submissions/rtdetr-l-e20-b8-t4x2-ddpfix-t10h5-iou04-conf001-max300.csv",
+        "rows": 6427
+      },
+      "validation": {
+        "detection_counts_by_class": {
+          "0": 27665,
+          "1": 6266,
+          "10": 23258,
+          "11": 93848,
+          "12": 8689,
+          "13": 81294,
+          "14": 383,
+          "2": 19692,
+          "3": 20098,
+          "4": 8450,
+          "5": 43818,
+          "6": 19597,
+          "7": 41148,
+          "8": 23728,
+          "9": 83547
+        },
+        "error_count": 0,
+        "errors": [],
+        "expected_rows": 6427,
+        "rows": 6427,
+        "valid": true
+      }
+    },
+    {
+      "conf": 0.03,
+      "max_detections": 100,
+      "output": "artifacts/submissions/rtdetr-l-e20-b8-t4x2-ddpfix-t10h5-iou04-conf003-max100.csv",
+      "submission": {
+        "detection_counts_by_class": {
+          "0": 8428,
+          "1": 1153,
+          "10": 4336,
+          "11": 28240,
+          "12": 783,
+          "13": 17153,
+          "14": 3369,
+          "2": 4599,
+          "3": 6675,
+          "4": 1818,
+          "5": 10004,
+          "6": 4575,
+          "7": 8987,
+          "8": 5042,
+          "9": 16534
+        },
+        "expected_rows": 6427,
+        "output": "artifacts/submissions/rtdetr-l-e20-b8-t4x2-ddpfix-t10h5-iou04-conf003-max100.csv",
+        "rows": 6427
+      },
+      "validation": {
+        "detection_counts_by_class": {
+          "0": 8428,
+          "1": 1153,
+          "10": 4336,
+          "11": 28240,
+          "12": 783,
+          "13": 17153,
+          "14": 3369,
+          "2": 4599,
+          "3": 6675,
+          "4": 1818,
+          "5": 10004,
+          "6": 4575,
+          "7": 8987,
+          "8": 5042,
+          "9": 16534
+        },
+        "error_count": 0,
+        "errors": [],
+        "expected_rows": 6427,
+        "rows": 6427,
+        "valid": true
+      }
+    },
+    {
+      "conf": 0.03,
+      "max_detections": 300,
+      "output": "artifacts/submissions/rtdetr-l-e20-b8-t4x2-ddpfix-t10h5-iou04-conf003-max300.csv",
+      "submission": {
+        "detection_counts_by_class": {
+          "0": 9191,
+          "1": 2439,
+          "10": 6651,
+          "11": 36457,
+          "12": 1671,
+          "13": 27327,
+          "14": 3369,
+          "2": 7403,
+          "3": 7777,
+          "4": 4054,
+          "5": 14096,
+          "6": 8429,
+          "7": 15419,
+          "8": 9263,
+          "9": 28929
+        },
+        "expected_rows": 6427,
+        "output": "artifacts/submissions/rtdetr-l-e20-b8-t4x2-ddpfix-t10h5-iou04-conf003-max300.csv",
+        "rows": 6427
+      },
+      "validation": {
+        "detection_counts_by_class": {
+          "0": 9191,
+          "1": 2439,
+          "10": 6651,
+          "11": 36457,
+          "12": 1671,
+          "13": 27327,
+          "14": 3369,
+          "2": 7403,
+          "3": 7777,
+          "4": 4054,
+          "5": 14096,
+          "6": 8429,
+          "7": 15419,
+          "8": 9263,
+          "9": 28929
+        },
+        "error_count": 0,
+        "errors": [],
+        "expected_rows": 6427,
+        "rows": 6427,
+        "valid": true
+      }
+    },
+    {
+      "conf": 0.05,
+      "max_detections": 100,
+      "output": "artifacts/submissions/rtdetr-l-e20-b8-t4x2-ddpfix-t10h5-iou04-conf005-max100.csv",
+      "submission": {
+        "detection_counts_by_class": {
+          "0": 6103,
+          "1": 607,
+          "10": 3083,
+          "11": 19748,
+          "12": 431,
+          "13": 11016,
+          "14": 4067,
+          "2": 3139,
+          "3": 4744,
+          "4": 1422,
+          "5": 6661,
+          "6": 3394,
+          "7": 6236,
+          "8": 3721,
+          "9": 10731
+        },
+        "expected_rows": 6427,
+        "output": "artifacts/submissions/rtdetr-l-e20-b8-t4x2-ddpfix-t10h5-iou04-conf005-max100.csv",
+        "rows": 6427
+      },
+      "validation": {
+        "detection_counts_by_class": {
+          "0": 6103,
+          "1": 607,
+          "10": 3083,
+          "11": 19748,
+          "12": 431,
+          "13": 11016,
+          "14": 4067,
+          "2": 3139,
+          "3": 4744,
+          "4": 1422,
+          "5": 6661,
+          "6": 3394,
+          "7": 6236,
+          "8": 3721,
+          "9": 10731
+        },
+        "error_count": 0,
+        "errors": [],
+        "expected_rows": 6427,
+        "rows": 6427,
+        "valid": true
+      }
+    },
+    {
+      "conf": 0.05,
+      "max_detections": 300,
+      "output": "artifacts/submissions/rtdetr-l-e20-b8-t4x2-ddpfix-t10h5-iou04-conf005-max300.csv",
+      "submission": {
+        "detection_counts_by_class": {
+          "0": 6241,
+          "1": 1038,
+          "10": 3817,
+          "11": 22409,
+          "12": 564,
+          "13": 14233,
+          "14": 4067,
+          "2": 3989,
+          "3": 5017,
+          "4": 2271,
+          "5": 7825,
+          "6": 4757,
+          "7": 8329,
+          "8": 5118,
+          "9": 14243
+        },
+        "expected_rows": 6427,
+        "output": "artifacts/submissions/rtdetr-l-e20-b8-t4x2-ddpfix-t10h5-iou04-conf005-max300.csv",
+        "rows": 6427
+      },
+      "validation": {
+        "detection_counts_by_class": {
+          "0": 6241,
+          "1": 1038,
+          "10": 3817,
+          "11": 22409,
+          "12": 564,
+          "13": 14233,
+          "14": 4067,
+          "2": 3989,
+          "3": 5017,
+          "4": 2271,
+          "5": 7825,
+          "6": 4757,
+          "7": 8329,
+          "8": 5118,
+          "9": 14243
+        },
+        "error_count": 0,
+        "errors": [],
+        "expected_rows": 6427,
+        "rows": 6427,
+        "valid": true
+      }
+    },
+    {
+      "conf": 0.07,
+      "max_detections": 100,
+      "output": "artifacts/submissions/rtdetr-l-e20-b8-t4x2-ddpfix-t10h5-iou04-conf007-max100.csv",
+      "submission": {
+        "detection_counts_by_class": {
+          "0": 5109,
+          "1": 380,
+          "10": 2416,
+          "11": 14834,
+          "12": 277,
+          "13": 8071,
+          "14": 4405,
+          "2": 2273,
+          "3": 3865,
+          "4": 1135,
+          "5": 4889,
+          "6": 2657,
+          "7": 4730,
+          "8": 2864,
+          "9": 7399
+        },
+        "expected_rows": 6427,
+        "output": "artifacts/submissions/rtdetr-l-e20-b8-t4x2-ddpfix-t10h5-iou04-conf007-max100.csv",
+        "rows": 6427
+      },
+      "validation": {
+        "detection_counts_by_class": {
+          "0": 5109,
+          "1": 380,
+          "10": 2416,
+          "11": 14834,
+          "12": 277,
+          "13": 8071,
+          "14": 4405,
+          "2": 2273,
+          "3": 3865,
+          "4": 1135,
+          "5": 4889,
+          "6": 2657,
+          "7": 4730,
+          "8": 2864,
+          "9": 7399
+        },
+        "error_count": 0,
+        "errors": [],
+        "expected_rows": 6427,
+        "rows": 6427,
+        "valid": true
+      }
+    },
+    {
+      "conf": 0.07,
+      "max_detections": 300,
+      "output": "artifacts/submissions/rtdetr-l-e20-b8-t4x2-ddpfix-t10h5-iou04-conf007-max300.csv",
+      "submission": {
+        "detection_counts_by_class": {
+          "0": 5139,
+          "1": 537,
+          "10": 2671,
+          "11": 15729,
+          "12": 298,
+          "13": 9194,
+          "14": 4405,
+          "2": 2560,
+          "3": 3947,
+          "4": 1451,
+          "5": 5229,
+          "6": 3150,
+          "7": 5448,
+          "8": 3387,
+          "9": 8509
+        },
+        "expected_rows": 6427,
+        "output": "artifacts/submissions/rtdetr-l-e20-b8-t4x2-ddpfix-t10h5-iou04-conf007-max300.csv",
+        "rows": 6427
+      },
+      "validation": {
+        "detection_counts_by_class": {
+          "0": 5139,
+          "1": 537,
+          "10": 2671,
+          "11": 15729,
+          "12": 298,
+          "13": 9194,
+          "14": 4405,
+          "2": 2560,
+          "3": 3947,
+          "4": 1451,
+          "5": 5229,
+          "6": 3150,
+          "7": 5448,
+          "8": 3387,
+          "9": 8509
+        },
+        "error_count": 0,
+        "errors": [],
+        "expected_rows": 6427,
+        "rows": 6427,
+        "valid": true
+      }
+    }
+  ],
+  "weights": "temp/rtdetr-l-e20-b8-t4x2-ddpfix-t10h5/weights/best.pt"
+}
