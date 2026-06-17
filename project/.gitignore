@@ -1,0 +1,18 @@
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.venv/
+*.egg-info/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Large captured/processed data artifacts are not versioned by default.
+data/raw/*
+!data/raw/README.md
+data/datasets/*
+!data/datasets/README.md
+data/processed/*
+!data/processed/README.md
+data/experiments/*
+!data/experiments/README.md
