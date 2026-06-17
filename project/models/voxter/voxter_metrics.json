@@ -1,0 +1,29 @@
+{
+  "checkpoint_path": "/home/mitin/code/voxter/data/experiments/stage3/offline-from-overnight-fast/checkpoint.pt",
+  "device": "cpu",
+  "entropy": 0.3887115220228831,
+  "entropy_weight": 0.0005,
+  "episode_count": 12,
+  "epochs": 1,
+  "failures": [
+    "rollout has no terminal steps"
+  ],
+  "final_loss": -0.014234678295906633,
+  "gamma": 0.99,
+  "kl_loss": 0.04371345524365703,
+  "kl_weight": 0.1,
+  "learning_rate": 5e-06,
+  "mean_reward": 0.0008958333333333334,
+  "normalize_advantages": true,
+  "output_dir": "/home/mitin/code/voxter/data/experiments/stage3/offline-from-overnight-fast",
+  "passed": false,
+  "policy_loss": -0.01841166828914235,
+  "rollout_count": 3,
+  "run_id": "offline-from-overnight-fast",
+  "schema_version": "stage3-training-v1",
+  "source_checkpoint_path": "/home/mitin/code/voxter/data/experiments/stage3/overnight-collect-only/active/checkpoint.pt",
+  "step_count": 1536,
+  "terminal_count": 0,
+  "total_reward": 1.3760000000000001,
+  "train_visual_encoder": false
+}

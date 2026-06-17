@@ -1,0 +1,14 @@
+
+[dev]
+mypy>=1.10
+pytest>=8.0
+ruff>=0.5
+
+[onnx]
+onnx>=1.21
+onnxruntime>=1.26
+onnxscript>=0.5
+
+[train]
+torch>=2.3
+torchvision>=0.18

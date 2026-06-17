@@ -1,0 +1,20 @@
+{
+  "rollout_paths": [
+    "/home/mitin/code/voxter/data/experiments/stage3/overnight-collect-only/runs/iteration-000001/live/stage3_rollout.jsonl",
+    "/home/mitin/code/voxter/data/experiments/stage3/overnight-collect-only/runs/iteration-000002/live/stage3_rollout.jsonl",
+    "/home/mitin/code/voxter/data/experiments/stage3/overnight-collect-only/runs/iteration-000003/live/stage3_rollout.jsonl"
+  ],
+  "schema_version": "stage3-training-v1",
+  "source_checkpoint_path": "/home/mitin/code/voxter/data/experiments/stage3/overnight-collect-only/active/checkpoint.pt",
+  "training": {
+    "entropy_weight": 0.0005,
+    "epochs": 1,
+    "gamma": 0.99,
+    "kl_weight": 0.1,
+    "learning_rate": 5e-06,
+    "max_episode_steps": 128,
+    "max_episodes": 12,
+    "normalize_advantages": true,
+    "train_visual_encoder": false
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "iterations": 500,
+  "latency_ms": {
+    "max": 7.09886700133211,
+    "mean": 4.761584305961151,
+    "min": 3.757074000532157,
+    "p50": 4.711252999186399,
+    "p95": 5.968477000351413,
+    "p99": 6.469103000199539
+  },
+  "metadata_path": "/home/mitin/code/ml-theory/project/models/voxter/voxter.onnx.json",
+  "onnx_path": "/home/mitin/code/ml-theory/project/models/voxter/voxter.onnx",
+  "output_shapes": {
+    "held_logit": [
+      1
+    ],
+    "next_hidden": [
+      1,
+      1,
+      64
+    ],
+    "press_logit": [
+      1
+    ],
+    "release_logit": [
+      1
+    ]
+  },
+  "passed_tick_budget": true,
+  "provider": "CPUExecutionProvider",
+  "providers": [
+    "AzureExecutionProvider",
+    "CPUExecutionProvider"
+  ],
+  "target_hz": 60.0,
+  "tick_budget_ms": 16.666666666666668,
+  "warmup_iterations": 50
+}

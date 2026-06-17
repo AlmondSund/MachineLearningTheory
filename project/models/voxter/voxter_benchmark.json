@@ -1,0 +1,38 @@
+{
+  "iterations": 500,
+  "latency_ms": {
+    "max": 6.172230001538992,
+    "mean": 4.418526795809157,
+    "min": 3.546504012774676,
+    "p50": 4.3225029949098825,
+    "p95": 5.415647989138961,
+    "p99": 5.772043979959562
+  },
+  "metadata_path": "/home/mitin/code/voxter/data/experiments/stage3/offline-from-overnight-fast/stage2_step.onnx.json",
+  "onnx_path": "/home/mitin/code/voxter/data/experiments/stage3/offline-from-overnight-fast/stage2_step.onnx",
+  "output_shapes": {
+    "held_logit": [
+      1
+    ],
+    "next_hidden": [
+      1,
+      1,
+      64
+    ],
+    "press_logit": [
+      1
+    ],
+    "release_logit": [
+      1
+    ]
+  },
+  "passed_tick_budget": true,
+  "provider": "CPUExecutionProvider",
+  "providers": [
+    "AzureExecutionProvider",
+    "CPUExecutionProvider"
+  ],
+  "target_hz": 60.0,
+  "tick_budget_ms": 16.666666666666668,
+  "warmup_iterations": 50
+}
