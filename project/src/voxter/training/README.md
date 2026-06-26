@@ -13,8 +13,8 @@ Expected workflows include:
 Training data should be split by trajectory, section, seed, or section family.
 Do not evaluate generalization with random frame-level splits.
 
-Offline loss and accuracy are not sufficient evidence of gameplay competence.
-Training workflows should produce artifacts that can be evaluated online through
+Offline loss and accuracy are not sufficient for judging gameplay competence.
+Training workflows should produce artifacts that can be checked online through
 the runtime and evaluation modules.
 
 Implemented modules:

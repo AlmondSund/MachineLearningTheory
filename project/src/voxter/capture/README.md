@@ -40,9 +40,9 @@ Transient frame-pull failures are counted as dropped frames in
 `capture_summary.json`. They do not create placeholder frame rows; the frame
 manifest contains only frames actually written to disk.
 
-The `grim` capture adapter is an offline/debug backend. It is not enough
-evidence for a real-time 60 Hz runtime backend unless timing measurements fit
-the full control-cycle budget.
+The `grim` capture adapter is an offline/debug backend. Do not use it as the
+basis for a real-time 60 Hz runtime claim unless timing measurements fit the
+full control-cycle budget.
 
 The `pipewire` backend uses xdg-desktop-portal, PipeWire, GStreamer, and an
 `appsink` reader to pull frames from a persistent stream. It supports compressed

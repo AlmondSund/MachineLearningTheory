@@ -37,7 +37,7 @@ the current run/attempt are discarded.
 `voxter.preprocessing.calibration` scores candidate `delta_sys` values by
 comparing frame-sampled held state with event-reconstructed labels. This is a
 log-level calibration check; final visual delay calibration still needs visual
-evidence or an explicit visual marker.
+confirmation or an explicit visual marker.
 
 `voxter.preprocessing.observation` defines the first model-observation
 contract, `observation-v1`: raw RGB bytes are converted to deterministic
@@ -58,5 +58,5 @@ behavior-cloning dataset from a raw capture directory. It reuses
 writes `frame-stack-v1` binary payloads, and emits a `stage1-manifest-v1` JSONL
 manifest plus a `stage1-dataset-summary-v1` JSON summary with binary class
 counts and weighted-BCE class weights. This slice intentionally supports only
-PGM/gray8 frame files, matching the current realtime evidence path; JPEG/PNG
+PGM/gray8 frame files, matching the current realtime data path; JPEG/PNG
 decoding remains a separate adapter.

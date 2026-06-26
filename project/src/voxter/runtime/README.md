@@ -56,5 +56,5 @@ PipeWire benchmark modes are separated:
 - `recording`: write temporary frame files through the capture backend
 
 Passing this benchmark means the measured stage skeleton stayed inside the tick
-budget. It does not prove gameplay competence, trained-policy latency, or safe
-OS input injection.
+budget. It does not establish gameplay competence, trained-policy latency, or
+safe OS input injection.

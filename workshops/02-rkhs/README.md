@@ -4,10 +4,11 @@ Main notebook: `notebook.ipynb`
 
 This workshop studies sample statistics in the original feature space and in RKHS, including centered Gram matrices, empirical mean embeddings, and MNIST-based experiments with an RBF kernel.
 
-## Portfolio Evidence
+## Topics
 
-- Foundation: statistical learning and kernel methods.
-- Demonstrates: empirical feature-space statistics, RKHS representations,
-  Gram-matrix reasoning, and kernelized comparison on image data.
-- Status: course workshop artifact, preserved for evidence rather than polished
-  as a standalone project.
+- Statistical learning and kernel methods.
+- Empirical feature-space statistics and RKHS representations.
+- Gram-matrix reasoning and kernelized comparison on image data.
+
+This is a course workshop notebook, so assignment framing and exploratory cells
+are kept in place.

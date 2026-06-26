@@ -1,54 +1,47 @@
 # Voxter
 
-Voxter is the final project for the Machine Learning Theory course and the
-strongest applied portfolio artifact in this repository. It is a real-time
-visuomotor model demo: the system observes a game window, predicts keyboard
-actions from recent frames, and can inject those actions through `/dev/uinput`
-for a live showcase.
+Voxter is the final project for the Machine Learning Theory course. It is a
+real-time visuomotor model demo: the system observes a game window, predicts
+keyboard actions from recent frames, and can inject those actions through
+`/dev/uinput` for a live run.
 
-## What This Demonstrates
+## Project Guide
 
-| Foundation | Evidence in this project |
+| Area | Files |
 | --- | --- |
-| Experimental design | Data capture, causal alignment, preprocessing contracts, model/runtime separation, and supported-versus-unsupported claims in [`notebooks/voxter.ipynb`](notebooks/voxter.ipynb). |
-| Neural networks | CNN and recurrent policy framing in [`src/voxter/policy/README.md`](src/voxter/policy/README.md). |
-| Optimization | Behavioral-cloning and transition-sensitive training workflow in [`src/voxter/training/README.md`](src/voxter/training/README.md). |
-| Evaluation | Offline metrics, transition timing, online gameplay metrics, and runtime deadline concerns in [`src/voxter/evaluation/README.md`](src/voxter/evaluation/README.md). |
-| Systems constraints | Real-time loop, ONNX runtime contract, capture/preprocess/inference/input budget, and demo logs. |
+| Main notebook | [`notebooks/voxter.ipynb`](notebooks/voxter.ipynb) |
+| Source-module overview | [`src/voxter/README.md`](src/voxter/README.md) |
+| Policy notes | [`src/voxter/policy/README.md`](src/voxter/policy/README.md) |
+| Training notes | [`src/voxter/training/README.md`](src/voxter/training/README.md) |
+| Evaluation notes | [`src/voxter/evaluation/README.md`](src/voxter/evaluation/README.md) |
+| Runtime notes | [`src/voxter/runtime/README.md`](src/voxter/runtime/README.md) |
+| Showcase video | [`assets/showcase.mp4`](assets/showcase.mp4) |
+| Demo summary | [`demo-run/summary.json`](demo-run/summary.json) |
 
-## Artifact Status
+## Topics In The Project
 
-This is a course final project preserved as portfolio evidence. It is more
-engineered than the workshop and midterm notebooks, but it should still be read
-as an academic final project rather than a maintained production package.
+- Data capture and causal alignment.
+- Preprocessing contracts for frame observations and action labels.
+- CNN and recurrent policy stages.
+- Behavioral-cloning training workflow.
+- ONNX export and runtime metadata.
+- Runtime budget, latency checks, and live-control logs.
+- Qualitative showcase output and project limitations.
 
-Supported evidence includes:
+## Material Status
 
-- a theory-synchronized project notebook,
-- source-module documentation for capture, preprocessing, policy, training,
-  evaluation, runtime, and control boundaries,
-- an exported ONNX model and benchmark artifacts,
-- a recorded showcase video,
-- a demo run summary and logs.
+This directory keeps the final project as course material. It has more
+engineering structure than the workshop and midterm folders, but it should not
+be read as a maintained production package or a general-purpose game-playing
+system.
 
-Unsupported claims are intentionally not implied: this repository does not claim
-general-purpose game playing, robust deployment across desktop environments, or
-production-safe OS input automation.
-
-## Best Review Path
-
-1. Read [`notebooks/voxter.ipynb`](notebooks/voxter.ipynb) for the project
-   thesis, contracts, model architecture, runtime budget, qualitative showcase,
-   and limitations.
-2. Read [`src/voxter/README.md`](src/voxter/README.md) for module boundaries.
-3. Inspect [`assets/showcase.mp4`](assets/showcase.mp4) for recorded behavior.
-4. Inspect [`models/voxter/voxter_benchmark.json`](models/voxter/voxter_benchmark.json)
-   and [`demo-run/summary.json`](demo-run/summary.json) for runtime evidence.
+The live-control path touches desktop capture and OS input injection. Use it
+only in a local environment where the target game window is visible, focused,
+and safe to control.
 
 ## Files
 
-- [`notebooks/voxter.ipynb`](notebooks/voxter.ipynb): main project narrative and
-  evidence notebook.
+- [`notebooks/voxter.ipynb`](notebooks/voxter.ipynb): main project notebook.
 - [`src/voxter/`](src/voxter/): source modules and boundary documentation.
 - [`models/voxter/voxter.onnx`](models/voxter/voxter.onnx): exported runtime
   model.
@@ -101,5 +94,3 @@ python tools/run_voxter_live.py \
   --confirm APPLY-CONTROL \
   models/voxter/voxter.onnx
 ```
-
-Use the live command only when the target game window is visible and focused.

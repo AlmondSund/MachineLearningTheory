@@ -1,32 +1,29 @@
 # Workshops
 
-The workshops are course artifacts: guided practical notebooks that demonstrate
-topic coverage and applied reasoning. They are not polished standalone
-portfolio projects, but they are useful evidence of breadth across ML
-foundations.
+Workshop material is organized one activity per directory. Each workshop is a
+course notebook with its related statement, notes, helper code, or local assets
+when those files are needed.
 
-## Workshop Evidence Map
+## Workshop Map
 
-| Workshop | Topic | Demonstrates | Status |
-| --- | --- | --- | --- |
-| [`01-regressors/`](01-regressors/) | Regression under noise | Polynomial design matrices, OLS, Ridge, ML, MAP, and noise-aware estimator comparison. | Course workshop. |
-| [`02-rkhs/`](02-rkhs/) | RKHS statistics | Centered Gram matrices, empirical mean embeddings, sample statistics in original and kernel feature spaces. | Course workshop. |
-| [`03-model-comparison/`](03-model-comparison/) | Regression model comparison | Linear, regularized, nonlinear, probabilistic, and ensemble regression comparison with assumption diagnostics. | Course workshop. |
-| [`04-classification/`](04-classification/) | Neural network classification | Two-layer CNN classification on MNIST and Fashion-MNIST plus feature-map inspection. | Course workshop. |
-| [`05-time-series/`](05-time-series/) | Time-series forecasting | Synthetic decomposition, ACF-based window selection, and next-step forecasting models. | Course workshop. |
+| Workshop | Topic | Contents |
+| --- | --- | --- |
+| [`01-regressors/`](01-regressors/) | Regression under noise | Polynomial design matrices, OLS, Ridge, ML, MAP, and estimator comparison. |
+| [`02-rkhs/`](02-rkhs/) | RKHS statistics | Centered Gram matrices, empirical mean embeddings, and statistics in original and kernel feature spaces. |
+| [`03-model-comparison/`](03-model-comparison/) | Regression model comparison | Linear, regularized, nonlinear, probabilistic, and ensemble regressors with diagnostics. |
+| [`04-classification/`](04-classification/) | Neural network classification | Two-layer CNN classification on MNIST and Fashion-MNIST with feature-map inspection. |
+| [`05-time-series/`](05-time-series/) | Time-series forecasting | Synthetic decomposition, ACF-based window selection, and next-step forecasting models. |
 
-## Best Evidence By Foundation
+## Topic Shortcuts
 
 - Linear models: [`01-regressors/notebook.ipynb`](01-regressors/notebook.ipynb)
   and [`03-model-comparison/notebook.ipynb`](03-model-comparison/notebook.ipynb).
 - Statistical learning: [`02-rkhs/notebook.ipynb`](02-rkhs/notebook.ipynb).
 - Neural networks: [`04-classification/notebook.ipynb`](04-classification/notebook.ipynb).
-- Evaluation: [`03-model-comparison/notebook.ipynb`](03-model-comparison/notebook.ipynb).
-- Experimental setup: [`05-time-series/notebook.ipynb`](05-time-series/notebook.ipynb).
+- Model assessment: [`03-model-comparison/notebook.ipynb`](03-model-comparison/notebook.ipynb).
+- Time series: [`05-time-series/notebook.ipynb`](05-time-series/notebook.ipynb).
 
-## Reading Notes
+## Notes
 
-Each workshop directory can contain a notebook, an assignment statement, short
-contextual notes, helper code, or local assets. The notebooks are preserved as
-completed course work, so exploratory cells and assignment-specific framing are
-expected.
+The notebooks are kept as course work. They may include exploratory code,
+assignment-specific setup, and outputs from the original activity.
