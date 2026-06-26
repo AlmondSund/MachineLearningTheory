@@ -1,9 +1,9 @@
 # Voxter
 
 Voxter is the final project for the Machine Learning Theory course. It is a
-real-time visuomotor model demo: the system observes a game window, predicts
-keyboard actions from recent frames, and can inject those actions through
-`/dev/uinput` for a live run.
+real-time visuomotor modeling project: the system observes a game window,
+predicts keyboard actions from recent frames, and includes tooling for local
+runtime experiments.
 
 ## Project Guide
 
@@ -15,7 +15,6 @@ keyboard actions from recent frames, and can inject those actions through
 | Training notes | [`src/voxter/training/README.md`](src/voxter/training/README.md) |
 | Evaluation notes | [`src/voxter/evaluation/README.md`](src/voxter/evaluation/README.md) |
 | Runtime notes | [`src/voxter/runtime/README.md`](src/voxter/runtime/README.md) |
-| Showcase video | [`assets/showcase.mp4`](assets/showcase.mp4) |
 | Demo summary | [`demo-run/summary.json`](demo-run/summary.json) |
 
 ## Topics In The Project
@@ -26,7 +25,8 @@ keyboard actions from recent frames, and can inject those actions through
 - Behavioral-cloning training workflow.
 - ONNX export and runtime metadata.
 - Runtime budget, latency checks, and live-control logs.
-- Qualitative showcase output and project limitations.
+- Project limitations and local runtime notes.
+- Optional recorded run: [`assets/showcase.mp4`](assets/showcase.mp4).
 
 ## Material Status
 
@@ -51,9 +51,9 @@ and safe to control.
   metadata.
 - [`models/voxter/voxter_benchmark.json`](models/voxter/voxter_benchmark.json):
   local latency benchmark.
-- [`tools/run_voxter_live.py`](tools/run_voxter_live.py): live demo runner.
+- [`tools/run_voxter_live.py`](tools/run_voxter_live.py): local live-run tool.
 - [`tools/benchmark_voxter.py`](tools/benchmark_voxter.py): model latency check.
-- [`assets/showcase.mp4`](assets/showcase.mp4): recorded showcase video.
+- [`assets/showcase.mp4`](assets/showcase.mp4): optional recorded run.
 - [`demo-run/`](demo-run/): preserved demo run logs and summary.
 
 ## Setup
@@ -62,7 +62,7 @@ and safe to control.
 python -m pip install -e ".[onnx]"
 ```
 
-The live demo also needs the local desktop capture stack, `tesseract`, and
+The local runtime path also needs the desktop capture stack, `tesseract`, and
 permission to write to `/dev/uinput`.
 
 ## Benchmark
@@ -73,7 +73,7 @@ python tools/benchmark_voxter.py \
   --output models/voxter/benchmark-check.json
 ```
 
-## Live Demo
+## Local Runtime Experiment
 
 ```bash
 python tools/run_voxter_live.py \

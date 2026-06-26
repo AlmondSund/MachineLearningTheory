@@ -15,17 +15,17 @@ project.
 - [`workshops/`](workshops/): guided practical notebooks.
 - [`midterms/`](midterms/): midterm statements, solution notebooks, and related
   materials.
-- [`project/`](project/): final project, Voxter, a real-time visuomotor model
-  demo.
+- [`project/`](project/): final course project exploring real-time visuomotor
+  modeling.
 
 ## Topics Covered
 
 | Topic | Main materials |
 | --- | --- |
-| Optimization and training | [`midterms/02/notebooks/03-manual-nn.ipynb`](midterms/02/notebooks/03-manual-nn.ipynb), [`project/notebooks/voxter.ipynb`](project/notebooks/voxter.ipynb) |
+| Optimization and training | [`midterms/02/notebooks/03-manual-nn.ipynb`](midterms/02/notebooks/03-manual-nn.ipynb) |
 | Statistical learning and kernels | [`workshops/02-rkhs/notebook.ipynb`](workshops/02-rkhs/notebook.ipynb), [`midterms/01/notebooks/02-rkhs.ipynb`](midterms/01/notebooks/02-rkhs.ipynb) |
 | Linear and regularized models | [`workshops/01-regressors/notebook.ipynb`](workshops/01-regressors/notebook.ipynb), [`midterms/01/notebooks/01-regression.ipynb`](midterms/01/notebooks/01-regression.ipynb) |
-| Neural networks | [`workshops/04-classification/notebook.ipynb`](workshops/04-classification/notebook.ipynb), [`midterms/02/notebooks/03-manual-nn.ipynb`](midterms/02/notebooks/03-manual-nn.ipynb), [`project/`](project/) |
+| Neural networks | [`workshops/04-classification/notebook.ipynb`](workshops/04-classification/notebook.ipynb), [`midterms/02/notebooks/03-manual-nn.ipynb`](midterms/02/notebooks/03-manual-nn.ipynb) |
 | Model assessment and diagnostics | [`workshops/03-model-comparison/notebook.ipynb`](workshops/03-model-comparison/notebook.ipynb), [`midterms/02/notebooks/02-rt-detr-l.ipynb`](midterms/02/notebooks/02-rt-detr-l.ipynb) |
 | Experimental work | [`workshops/05-time-series/notebook.ipynb`](workshops/05-time-series/notebook.ipynb), [`project/`](project/) |
 

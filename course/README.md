@@ -18,7 +18,7 @@ workshops, midterms, and final project.
 | --- | --- |
 | [`../workshops/`](../workshops/) | Practical notebooks and assignment-specific files. |
 | [`../midterms/`](../midterms/) | Midterm PDFs, solution notebooks, challenge material, and presentation assets. |
-| [`../project/`](../project/) | Voxter final project notebook, source modules, model files, demo logs, and showcase media. |
+| [`../project/`](../project/) | Voxter final project notebook, source modules, model files, and local run logs. |
 | [`../data/`](../data/) | Local conventions for datasets and heavier generated artifacts. |
 
 ## Conventions

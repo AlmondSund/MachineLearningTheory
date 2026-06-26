@@ -6,103 +6,113 @@ original course structure.
 
 ## Optimization And Training
 
-Start with:
+Primary:
 
 - [`midterms/02/notebooks/03-manual-nn.ipynb`](midterms/02/notebooks/03-manual-nn.ipynb)
-- [`project/notebooks/voxter.ipynb`](project/notebooks/voxter.ipynb)
+
+Secondary:
+
 - [`project/src/voxter/training/README.md`](project/src/voxter/training/README.md)
 
-Covered material:
+Notes:
 
 - Forward propagation, backpropagation, gradient checks, and update-sign
   conventions.
 - Loss curves, train/validation/test splits, residual diagnostics, and
   comparison with a high-level dense model.
-- Behavioral cloning, transition-sensitive training, and class-imbalance
-  considerations in the final project.
+- The final project includes behavioral-cloning and transition-sensitive
+  training notes, but the manual neural network notebook is the cleaner entry
+  point for this topic.
 
 ## Statistical Learning And Kernels
 
-Start with:
+Primary:
+
+- [`midterms/01/notebooks/02-rkhs.ipynb`](midterms/01/notebooks/02-rkhs.ipynb)
+
+Secondary:
 
 - [`workshops/02-rkhs/notebook.ipynb`](workshops/02-rkhs/notebook.ipynb)
-- [`midterms/01/notebooks/02-rkhs.ipynb`](midterms/01/notebooks/02-rkhs.ipynb)
 - [`midterms/01/notebooks/03-geometry.ipynb`](midterms/01/notebooks/03-geometry.ipynb)
 
-Covered material:
+Notes:
 
 - Sample statistics in feature spaces and RKHS representations.
 - Centered Gram matrices and empirical mean embeddings.
 - Linear and Gaussian RBF kernels for distribution comparison.
-- Pairwise distance matrices, Gram geometry, symmetry, diagonal entries, and
-  positive semidefiniteness.
+- Kernel geometry and positive semidefiniteness are covered in the geometry
+  notebook.
 
 ## Linear And Regularized Models
 
-Start with:
+Primary:
 
 - [`workshops/01-regressors/notebook.ipynb`](workshops/01-regressors/notebook.ipynb)
-- [`midterms/01/notebooks/01-regression.ipynb`](midterms/01/notebooks/01-regression.ipynb)
+
+Secondary:
+
 - [`workshops/03-model-comparison/notebook.ipynb`](workshops/03-model-comparison/notebook.ipynb)
 
-Covered material:
+Notes:
 
 - Regression under additive white Gaussian noise.
 - Polynomial design matrices and feature-space regression.
 - OLS, Ridge, ML, and MAP estimators.
-- Comparison of linear, regularized, nonlinear, probabilistic, and ensemble
-  regression models.
+- The model-comparison workshop broadens the view to other regression families.
 
 ## Neural Networks
 
-Start with:
+Primary:
 
 - [`midterms/02/notebooks/03-manual-nn.ipynb`](midterms/02/notebooks/03-manual-nn.ipynb)
-- [`workshops/04-classification/notebook.ipynb`](workshops/04-classification/notebook.ipynb)
-- [`project/notebooks/voxter.ipynb`](project/notebooks/voxter.ipynb)
-- [`project/src/voxter/policy/README.md`](project/src/voxter/policy/README.md)
 
-Covered material:
+Secondary:
+
+- [`workshops/04-classification/notebook.ipynb`](workshops/04-classification/notebook.ipynb)
+
+Notes:
 
 - A manual neural network for nonlinear regression.
 - CNN classification on MNIST and Fashion-MNIST.
 - Feature-map inspection by class.
-- Reactive CNN and recurrent CNN plus GRU policy stages in the final project.
+- The final project also includes policy-model notes, but it is better read in
+  the project context than as the main neural-network entry point.
 
 ## Model Assessment And Diagnostics
 
-Start with:
+Primary:
 
 - [`workshops/03-model-comparison/notebook.ipynb`](workshops/03-model-comparison/notebook.ipynb)
-- [`midterms/02/notebooks/02-rt-detr-l.ipynb`](midterms/02/notebooks/02-rt-detr-l.ipynb)
-- [`project/src/voxter/evaluation/README.md`](project/src/voxter/evaluation/README.md)
-- [`project/models/voxter/voxter_benchmark.json`](project/models/voxter/voxter_benchmark.json)
-- [`project/demo-run/summary.json`](project/demo-run/summary.json)
 
-Covered material:
+Secondary:
+
+- [`midterms/02/notebooks/02-rt-detr-l.ipynb`](midterms/02/notebooks/02-rt-detr-l.ipynb)
+
+Notes:
 
 - Model comparison across assumptions, flexibility, and empirical behavior.
 - Object-detection setup for the AMIA challenge, including class imbalance,
   geometry, dataset conversion checks, qualitative predictions, and limitations.
-- Runtime latency, deadline misses, transition timing, and online behavior in a
-  real-time control setting.
+- The final project has runtime and evaluation notes, but they are project
+  documentation rather than the main path for this topic.
 
 ## Experimental Work
 
-Start with:
+Primary:
 
 - [`workshops/05-time-series/notebook.ipynb`](workshops/05-time-series/notebook.ipynb)
-- [`project/notebooks/voxter.ipynb`](project/notebooks/voxter.ipynb)
-- [`project/src/voxter/preprocessing/README.md`](project/src/voxter/preprocessing/README.md)
-- [`project/src/voxter/runtime/README.md`](project/src/voxter/runtime/README.md)
-- [`project/assets/showcase.mp4`](project/assets/showcase.mp4)
 
-Covered material:
+Secondary:
+
+- [`project/notebooks/voxter.ipynb`](project/notebooks/voxter.ipynb)
+
+Notes:
 
 - Synthetic time-series construction from decomposition components.
 - ACF-based window selection and next-step forecasting setup.
-- Data capture, causal alignment, preprocessing, model architecture, ONNX
-  runtime, latency budget, and qualitative demo output for the final project.
+- The final project covers data capture, causal alignment, preprocessing, model
+  structure, runtime constraints, and project limitations.
+- Optional recorded run: [`project/assets/showcase.mp4`](project/assets/showcase.mp4).
 
 ## Material Types
 
@@ -115,7 +125,7 @@ Covered material:
 | [`workshops/05-time-series/`](workshops/05-time-series/) | Course workshop | Time-series decomposition and forecasting. |
 | [`midterms/01/`](midterms/01/) | Midterm material | Regression, RKHS, and kernel geometry. |
 | [`midterms/02/`](midterms/02/) | Midterm material | Detection, manual neural network, and challenge work. |
-| [`project/`](project/) | Final project | Voxter real-time visuomotor model demo. |
+| [`project/`](project/) | Final project | Real-time visuomotor modeling project. |
 
 ## Suggested Reading
 
