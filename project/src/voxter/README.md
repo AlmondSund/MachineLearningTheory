@@ -1,7 +1,8 @@
 # Voxter Source Modules
 
-The `voxter` package is organized around the project contracts in
-`research/model-theory`.
+The `voxter` package is organized around the final project contracts documented
+in [`../../README.md`](../../README.md) and
+[`../../notebooks/voxter.ipynb`](../../notebooks/voxter.ipynb).
 
 ## Module Boundaries
 
